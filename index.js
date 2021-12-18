@@ -8,7 +8,7 @@ window.onload = function () {
 
     startDatabaseConnection(getDatabaseNameByEvent(eventName));
     //
-    fillResultsList();
+    // fillResultsList();
 }
 
 let participants = [];
