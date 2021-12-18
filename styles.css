@@ -1,0 +1,317 @@
+html {
+    height: 100vh;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    background: url('./emoji-background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: "Comic Sans MS", cursive, sans-serif !important;
+}
+
+.red {
+    background-color: #E53935;
+}
+
+.green {
+    background-color: lightgreen;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 750px) {
+    .container {
+        flex-direction: column;
+    }
+}
+
+.container__select {
+    margin: 10px;
+}
+
+.container__button {
+    margin: 10px;
+}
+
+.data-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 300px;
+    margin-bottom: 20px;
+}
+
+.data-container__title {
+    margin: 10px 20px;
+    cursor: pointer;
+}
+
+.data-container__card {
+    width: 40%;
+}
+
+@media (max-width: 750px) {
+    .data-container {
+        flex-direction: column;
+    }
+    .data-container__card {
+        width: 90%;
+    }
+}
+
+.title {
+    text-align: center;
+    background-color: #f8db8c;
+    width: fit-content;
+    text-align: center;
+    padding: 20px;
+    margin: 6% auto 50px auto;
+    border: 2px solid #583515;
+    border-radius: 10px;
+    letter-spacing: 1.5px;
+    font-size: 32px;
+    text-transform: uppercase;
+    color: #583515;
+    box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 750px) {
+    .title {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border: 0.5px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    /* width: 40%; */
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    opacity: 1;
+    background-color: #BDBDBD;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+.actions__container {
+    display: flex;
+    flex-direction: column;
+    height: 75%;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.prompt {
+    width: 100%;
+    margin-bottom: 20px;
+    text-align: center;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.prompt__container {
+    padding: 5px;
+    border: 2px solid #583515;
+    border-radius: 8px;
+    background-color: #f8db8c;
+}
+
+.prompt__label {
+    font-size: 20px;
+    color: #583515;
+}
+
+@media (max-width: 750px) {
+    .prompt__container {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
+.prompt__label.font-small {
+    font-size: 16px;
+}
+
+.course-top-header {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 20px;
+    background: #43A047;
+    border-radius: 0 0 0 16px;
+    font-size: 16px;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    color: white;
+}
+
+.button {
+    height: auto;
+    font-size: 28px;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    width: fit-content;
+    border: none;
+    color: #583515;
+    background: #f8db8c;
+    border: 2px solid #583515;
+    cursor: pointer;
+    display: inline-block;
+    margin: 15px 30px;
+    font-weight: 700;
+    position: relative;
+    text-align: center;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.4);
+    transform: translate3d(0, 0, 0);
+}
+
+.button:hover {
+    filter: brightness(85%);
+    box-shadow: 5px 40px -10px rgba(0, 0, 0, 0.57);
+    transition: all 0.3s ease-in-out;
+}
+
+.select {
+    font-size: 28px;
+    border: 2px solid #583515;
+    border-radius: 10px;
+    min-width: 250px;
+    padding: 10px;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    background: #f8db8c;
+    box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.4);
+    color: #583515;
+    cursor: pointer;
+}
+
+.result {
+    width: 95%;
+    text-align: center;
+    margin-top: -150px;
+    pointer-events: none;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+}
+
+@media (max-width: 750px) {
+    .result {
+        margin-top: -350px;
+    }
+}
+
+.result-label {
+    display: inline-block;
+    font-weight: 600;
+    text-align: center;
+    background-color: #f8db8c;
+    width: fit-content;
+    text-align: center;
+    padding: 20px;
+    border: 2px solid #583515;
+    border-radius: 10px;
+    letter-spacing: 1.5px;
+    font-size: 32px;
+    text-transform: uppercase;
+    color: #583515;
+    box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.4);
+}
+
+.result-label.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.result-label__spanish {
+    font-size: 32px;
+}
+
+.result-label__english {
+    font-size: 26px;
+}
+
+/* Fade in: add 'show' and remove 'hide' */
+
+.fade-in--show {
+    opacity: 1;
+    transform: scale(1.5);
+    /* scale is to give expand effect. No need for fade in */
+    transition: opacity 2000ms, transform 1000ms;
+}
+
+.fade-in--hide {
+    opacity: 0;
+}
+
+/* Fade out: add 'hide' and remove 'show' */
+
+.fade-out--show {
+    opacity: 1;
+}
+
+.fade-out--hide {
+    opacity: 0;
+    transition: opacity 1000ms;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Don't expand result in little screens  */
+
+@media (max-width: 1000px) {
+    .fade-in--show {
+        transform: scale(1);
+    }
+}
+
+/* Table styles */
+
+table {
+    border-collapse: collapse;
+    margin: 20px;
+}
+
+th {
+    border: 2px solid black;
+    background-color: #8f8f8f;
+}
+
+td {
+    border: 1px solid black;
+}
+
+.column-width {
+    width: 50%;
+}
+
+.completed {
+    background-color: #9CCC65;
+}
+
+.selected {
+    background-color: #FFF176;
+}
+
+.chosen {
+    background-color: #FFA726;
+}
+
+.default {
+    background-color: #8f8f8f;
+}

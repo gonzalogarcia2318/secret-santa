@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Amigo Invisible - 6to grado</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="participant.js" type="text/javascript"></script>
+    <script src="index.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+
+    <div>
+
+        <div class="course-top-header" onclick="showActions()">
+            <span>6to grado</span>
+        </div>
+
+        <h2 class="title">Amig@ Invisible - Secret Friend</h2>
+
+        <div class="container picker-container fade-out--show" id="pickerContainer">
+
+            <div class="prompt">
+                <div class="prompt__container">
+                    <span class="prompt__label">Seleccioná tu nombre y clickeá el botón "Quien es mi amig@
+                        invible?"</span>
+                    <br>
+                    <span class="prompt__label font-small">Select your name and click on the button "Who is my secret
+                        friend?"</span>
+                </div>
+            </div>
+
+            <select id="participantsSelect" class="container__select select">
+                <option></option>
+            </select>
+
+            <button onclick="getInvisibleFriend()" id="selectButton" class="container__button button">
+                <span>Quién es mi amig</span><span style="font-size: 22px">@</span><span> invisible?</span> </span>
+                <br>
+                <span style="font-size: 22px;">Who is my secret friend?</span>
+            </button>
+
+        </div>
+
+        <div class="result" id="result">
+
+            <div class="result-label fade-in--hide" id="resultLabel">
+                <span class="result-label__spanish" id="resultLabelSpanish">Tu amig@ invisible es:</span>
+                <br>
+                <span class="result-label__english" id="resultLabelEnglish">Your secret friend is:</span>
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="data-container " id="dataContainer">
+        <div class="card data-container__card" id="resultsData">
+            <h3 class="data-container__title" onclick="toggleElement('resultsData')">Resultados</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th class="column-width">Nombre</th>
+                        <th class="column-width">Amigo</th>
+                    </tr>
+                </thead>
+                <tbody id="resultsDataTable">
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+    <!-- Firebase links -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-database.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyARmqHlLuG-_fkLHiHk0xsOja6yEl9KkWc",
+            authDomain: "testing-978ac.firebaseapp.com",
+            databaseURL: "https://testing-978ac.firebaseio.com",
+            projectId: "testing-978ac",
+            storageBucket: "testing-978ac.appspot.com",
+            messagingSenderId: "489374231517",
+            appId: "1:489374231517:web:233fb415176677a18f2434"
+        };
+
+        // Mariana's database
+        // var firebaseConfig = {
+        //     apiKey: "AIzaSyAfM3kYTCYw0Odu3wYwThGO00iTld9wVkU",
+        //     authDomain: "amigo-invisible-23e4a.firebaseapp.com",
+        //     databaseURL: "https://amigo-invisible-23e4a.firebaseio.com",
+        //     projectId: "amigo-invisible-23e4a",
+        //     storageBucket: "amigo-invisible-23e4a.appspot.com",
+        //     messagingSenderId: "49358122286",
+        //     appId: "1:49358122286:web:44abfcf0d734e5616c1ebf"
+        // };
+    </script>
+
+</body>
+
+
+</html>
