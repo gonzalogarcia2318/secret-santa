@@ -1,9 +1,14 @@
 window.onload = function () {
     participantsSelect = document.getElementById("participantsSelect");
     participantsSelect.disabled = true;
-    startDatabaseConnection()
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const eventName = urlParams.get('evento');
+    document.getElementById('eventName').innerHTML = eventName.toLowerCase();
+
+    startDatabaseConnection(getDatabaseNameByEvent(eventName));
     //
-    fillCoursesLists();
+    fillResultsList();
 }
 
 let participants = [];
@@ -14,10 +19,11 @@ let participantToUpdate;
 let participantsSelect;
 let resultLabel;
 
-function startDatabaseConnection() {
+function startDatabaseConnection(dbName) {
+    console.log('Using database: ' + dbName);
     firebase.initializeApp(firebaseConfig);
 
-    database = firebase.database().ref('secret-friend-db');
+    database = firebase.database().ref(dbName);
 
     database.on('value', function (snapshot) {
         console.warn("Database was updated. Refresh data.")
@@ -75,10 +81,8 @@ function getInvisibleFriend() {
             invisibleFriend.isSelected = true;
             participant.friend = invisibleFriend.name;
             //
-            resultLabelSpanish = document.getElementById("resultLabelSpanish");
-            resultLabelSpanish.innerHTML = `Tu amig@ invisible es: ${invisibleFriend.name.toUpperCase()}`
-            resultLabelEnglish = document.getElementById("resultLabelEnglish");
-            resultLabelEnglish.innerHTML = `Your secret friend is: ${invisibleFriend.name.toUpperCase()}`
+            resultLabelText = document.getElementById("resultLabelText");
+            resultLabelText.innerHTML = `Tu amigo invisible es: ${invisibleFriend.name.toUpperCase()}`
             //
             document.getElementById('resultLabel').classList.add('fade-in--show');
             document.getElementById('resultLabel').classList.remove('fade-in--hide');
@@ -125,6 +129,12 @@ function update(participant, friend) {
 }
 
 
+function getDatabaseNameByEvent(event) {
+    // event: NOCHEBUENA | NAVIDAD
+    return event == 'NOCHEBUENA' ? 'nochebuenaDb' : 'navidadDb';
+}
+
+
 // Functions to help in the development. Will be removed 
 // 
 //
@@ -137,10 +147,8 @@ function toggleElement(elementId) {
     document.getElementById(elementId).style.opacity = document.getElementById(elementId).style.opacity == "" || document.getElementById(elementId).style.opacity == 1 ? 0 : 1;
 }
 
-function fillCoursesLists() {
-    let dbRef = firebase.database().ref('secret-friend-db');
-    //
-    dbRef.once('value', function (snapshot) {
+function fillResultsList() {
+    database.once('value', function (snapshot) {
         fillTable("resultsDataTable", snapshot.val());
     });
 }
