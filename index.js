@@ -73,14 +73,22 @@ function getInvisibleFriend() {
             //
             console.log("Getting invisible friend for: ", participant);
             //
-            const possibleFriends = participants.filter(p => participant.id != p.id && !p.isSelected);
+            const possibleFriends = participants.filter(p => participant.id != p.id && !p.isSelected && p.name != 'Flavio' && p.name != 'Elsa');
             //
             const randomIndex = Math.floor(Math.random() * possibleFriends.length);
             invisibleFriend = possibleFriends[randomIndex];
 
+            //
+            let specialCase = false;
+            if(participant.name == 'Miriam' || participant.name == 'Elsa'){
+                specialCase = true;
+                invisibleFriend = handleSpecialCases(participant, participants);
+            }
+            
+
             // Validation for the last participant
             // The last participant could get himself as friend, so we have to check in the previous one. 
-            if (possibleFriends.length == 2) {
+            if (possibleFriends.length == 2 && !specialCase) {
                 invisibleFriend.isSelected = true;
                 possibleFriends.splice(possibleFriends.indexOf(invisibleFriend), 1);
 
@@ -141,3 +149,16 @@ function getDatabaseNameByEvent(event) {
     // event: NOCHEBUENA | NAVIDAD
     return event == 'NOCHEBUENA' ? 'nochebuenaDb' : 'navidadDb';
 }
+
+
+function handleSpecialCases(participant, participants){
+    let invisibleFriend;
+    if(participant.name == 'Miriam'){
+        invisibleFriend = participants.find(participant => participant.name == 'Elsa');
+    }
+    if(participant.name == 'Elsa'){
+        invisibleFriend = participants.find(participant => participant.name == 'Flavio');
+    }
+    return invisibleFriend;
+}
+
