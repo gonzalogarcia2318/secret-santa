@@ -4,9 +4,10 @@ window.onload = function () {
 
     const urlParams = new URLSearchParams(window.location.search);
     const eventName = urlParams.get('evento');
-    document.getElementById('eventName').innerHTML = eventName.toLowerCase();
-
-    startDatabaseConnection(getDatabaseNameByEvent(eventName));
+    if (eventName) {
+        document.getElementById('eventName').innerHTML = eventName.toLowerCase();
+        startDatabaseConnection(getDatabaseNameByEvent(eventName));
+    }
     //
     // fillResultsList();
 }
@@ -73,10 +74,31 @@ function getInvisibleFriend() {
             //
             console.log("Getting invisible friend for: ", participant);
             //
-            let possibleFriends = participants.filter(p => participant.id != p.id && !p.isSelected);
+            const possibleFriends = participants.filter(p => participant.id != p.id && !p.isSelected);
             //
-            let randomIndex = Math.floor(Math.random() * possibleFriends.length);
+            const randomIndex = Math.floor(Math.random() * possibleFriends.length);
             invisibleFriend = possibleFriends[randomIndex];
+
+            // Validation for the last participant
+            // The last participant could get himself as friend, so we have to check in the previous one. 
+            if (possibleFriends.length == 2) {
+                invisibleFriend.isSelected = true;
+                possibleFriends.splice(possibleFriends.indexOf(invisibleFriend), 1);
+
+                const remainingParticipant = possibleFriends[0];
+
+                if (!remainingParticipant.friend) {
+                    const possibleFriendsForLastOne = participants.filter(p => remainingParticipant.id != p.id && !p.isSelected);
+
+                    if (possibleFriendsForLastOne.length == 0) {
+                        // Last partipant would get himselft as friend,  so we have to switch them.
+                        invisibleFriend.isSelected = false;
+                        invisibleFriend = remainingParticipant;
+                    }
+                }
+
+            }
+
             //
             invisibleFriend.isSelected = true;
             participant.friend = invisibleFriend.name;
