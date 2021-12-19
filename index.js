@@ -5,7 +5,6 @@ window.onload = function () {
     const urlParams = new URLSearchParams(window.location.search);
     const eventName = urlParams.get('evento');
     if (eventName) {
-        document.getElementById('eventName').innerHTML = eventName.toLowerCase();
         startDatabaseConnection(getDatabaseNameByEvent(eventName));
     }
     //
@@ -91,7 +90,7 @@ function getInvisibleFriend() {
                     const possibleFriendsForLastOne = participants.filter(p => remainingParticipant.id != p.id && !p.isSelected);
 
                     if (possibleFriendsForLastOne.length == 0) {
-                        // Last partipant would get himselft as friend,  so we have to switch them.
+                        // Last partipant would get himselft as friend, so we have to switch them.
                         invisibleFriend.isSelected = false;
                         invisibleFriend = remainingParticipant;
                     }

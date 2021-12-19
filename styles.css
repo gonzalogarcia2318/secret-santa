@@ -8,7 +8,7 @@ body {
     flex-direction: column;
     background: url('./christmas-background.jpg') no-repeat center center fixed;
     background-size: cover;
-    font-family: "Comic Sans MS", cursive, sans-serif !important;
+    font-family: 'Merriweather Sans', sans-serif !important;
 }
 
 .red {
@@ -124,7 +124,7 @@ body {
 }
 
 .prompt__container {
-    padding: 5px;
+    padding: 10px;
     border: 2px solid #583515;
     border-radius: 8px;
     background-color: #f8db8c;
@@ -154,14 +154,14 @@ body {
     background: #285b52;
     border-radius: 0 0 0 16px;
     font-size: 16px;
-    font-family: "Comic Sans MS", cursive, sans-serif !important;
+    font-family: 'Merriweather Sans', sans-serif !important;
     color: white;
 }
 
 .button {
     height: auto;
     font-size: 28px;
-    font-family: "Comic Sans MS", cursive, sans-serif !important;
+    font-family: 'Merriweather Sans', sans-serif !important;
     width: fit-content;
     border: none;
     color: #583515;
@@ -191,7 +191,7 @@ body {
     border-radius: 10px;
     min-width: 250px;
     padding: 10px;
-    font-family: "Comic Sans MS", cursive, sans-serif !important;
+    font-family: 'Merriweather Sans', sans-serif !important;
     background: #f8db8c;
     box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.4);
     color: #583515;
