@@ -5,8 +5,7 @@ window.onload = function () {
     const urlParams = new URLSearchParams(window.location.search);
     const eventName = urlParams.get('evento');
     if (eventName) {
-        // startDatabaseConnection(getDatabaseNameByEvent(eventName));
-        startDatabaseConnection('test');
+        startDatabaseConnection(getDatabaseNameByEvent(eventName));
         refreshParticipants(null);
     }
     //
