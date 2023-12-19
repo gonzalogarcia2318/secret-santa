@@ -16,6 +16,7 @@ ___
 3. Para crear y asignar a los participantes sus amigos invisibles se tiene que llamar desde la CONSOLA a la funcion **`generateAndAssignParticipants()`**
 4. Una vez que se crearon, cada participante podra entrar a la página, seleccionar su nombre y se le mostrará su amigo invisible.
 
+(Esto se puede hacer localmente teniendo ya la aplicacion desplegada)
 
 ---
 ### La aplicación se despliega con Github Pages
